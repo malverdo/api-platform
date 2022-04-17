@@ -3,6 +3,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource
  * @ORM\Entity
+ * @ApiFilter(SearchFilter::class, properties={ "name": "partial"})
  */
 class Product // The class name will be used to name exposed resources
 {
@@ -22,7 +25,7 @@ class Product // The class name will be used to name exposed resources
     private $id;
 
     /**
-     * @var string $name A name property - this description will be available in the API documentation too.
+     * @var string $name хоть что-то на русском
      *
      * @ORM\Column
      * @Assert\NotBlank
