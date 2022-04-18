@@ -15,7 +15,7 @@ use App\Controller\ListeEquipementsController;
  *
  * @ApiResource(
  *     collectionOperations={
- *         "get","controller" = ListeEquipementsController::class
+ *         "get"
  *     },
         itemOperations={
  *         "get"={
@@ -24,7 +24,8 @@ use App\Controller\ListeEquipementsController;
  *             "defaults"={"color"="blue"},
  *             "options"={"my_option"="2"},
  *             "schemes"={"http"},
- *             "host"="api-platform.local"
+ *             "host"="api-platform.local",
+ *             "controller"=ListeEquipementsController::class
  *         }
  *     }
  *
