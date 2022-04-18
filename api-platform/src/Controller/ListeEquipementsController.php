@@ -6,9 +6,9 @@ class ListeEquipementsController
 {
 
 
-    public function __invoke($numsite): int
+    public function __invoke($id): int
     {
-        $a= 0;
-        return $a;
+        $a = 0;
+        return 'hello world';
     }
 }
