@@ -18,10 +18,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
         itemOperations={
  *         "get"={
- *             "path"="/grimoire/{id}",
+ *             "path"="/offers/{id}",
  *             "requirements"={"id"="\d+"},
  *             "defaults"={"color"="blue"},
- *             "options"={"my_option"="my_option_value"},
+ *             "options"={"my_option"="2"},
  *             "schemes"={"http"},
  *             "host"="api-platform.local"
  *         }
