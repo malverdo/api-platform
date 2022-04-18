@@ -15,7 +15,7 @@ use App\Controller\ListeEquipementsController;
  *
  * @ApiResource(
  *     collectionOperations={
- *         "get"
+ *         "get","post"
  *     },
         itemOperations={
  *         "get"={
@@ -49,7 +49,7 @@ class Offer
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="не указана цена")
      * @Assert\Range(min=0, minMessage="The price must be superior to 0.")
      * @Assert\Type(type="float")
      */
