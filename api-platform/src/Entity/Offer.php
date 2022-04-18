@@ -12,7 +12,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * An offer from my shop - this description will be automatically extracted from the PHPDoc to document the API.
  *
- * @ApiResource(iri="http://schema.org/Offer")
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get",
+ *     },
+ *     itemOperations={
+ *         "get"={
+ *             "controller"=NotFoundAction::class,
+ *             "read"=true,
+ *             "output"=true,
+ *         },
+ *     },
+ * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial"})
  * @ORM\Entity
  */
