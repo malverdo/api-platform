@@ -16,11 +16,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     collectionOperations={
  *         "get",
  *     },
- *     itemOperations={
+        itemOperations={
  *         "get"={
- *             "output"=true
- *         },
- *     },
+ *             "path"="/grimoire/{id}",
+ *             "requirements"={"id"="\d+"},
+ *             "defaults"={"color"="blue"},
+ *             "options"={"my_option"="my_option_value"},
+ *             "schemes"={"http"},
+ *             "host"="api-platform.local"
+ *         }
+ *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial"})
  * @ORM\Entity
