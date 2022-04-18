@@ -18,9 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     itemOperations={
  *         "get"={
- *             "controller"=NotFoundAction::class,
- *             "read"=true,
- *             "output"=true,
+ *             "output"=true
  *         },
  *     },
  * )
