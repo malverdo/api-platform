@@ -8,13 +8,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\ListeEquipementsController;
 
 /**
  * An offer from my shop - this description will be automatically extracted from the PHPDoc to document the API.
  *
  * @ApiResource(
  *     collectionOperations={
- *         "get",
+ *         "get","controller" = ListeEquipementsController::class
  *     },
         itemOperations={
  *         "get"={
@@ -26,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "host"="api-platform.local"
  *         }
  *     }
+ *
  * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial"})
  * @ORM\Entity
