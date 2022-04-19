@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Offer;
+use App\Entity\Product;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CreateBookPublication
@@ -10,16 +10,16 @@ class CreateBookPublication
 
     /**
      * @Route(
-     *     name="book_post_publication",
-     *     path="/books/{id}/publication",
+     *     name="product_post_publication",
+     *     path="/products/{id}/publication",
      *     methods={"POST"},
      *     defaults={
-     *         "_api_resource_class"=Offer::class,
+     *         "_api_resource_class"=Product::class,
      *         "_api_item_operation_name"="post_publication"
      *     }
      * )
      */
-    public function __invoke(Offer $data): Offer
+    public function __invoke(Product $data): Product
     {
         dd($data);
 
