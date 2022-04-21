@@ -8,7 +8,7 @@ class ListeEquipementsController
 
     public function __invoke($id): string
     {
-        $a = 0;
+        $a = 10;
         return 'hello world';
     }
 }
