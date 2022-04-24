@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Controller\ListeEquipementsController;
+use App\Controller\GetWeather;
 
 /**
  * An offer from my shop - this description will be automatically extracted from the PHPDoc to document the API.
@@ -26,7 +27,12 @@ use App\Controller\ListeEquipementsController;
  *             "schemes"={"http"},
  *             "host"="api-platform.local",
  *             "controller"=ListeEquipementsController::class
- *         }
+ *         },
+ *              get_weather": {
+ *             "method": "GET",
+ *             "path": "/places/{id}/weather",
+ *             "controller": GetWeather::class
+ *              }
  *     }
  *
  * )
