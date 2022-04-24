@@ -7,10 +7,17 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Controller\ListeEquipementsController;
 use App\Controller\GetWeather;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Core\Serializer\Filter\GroupFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
+
+//              "controller"=ListeEquipementsController::class
 /**
  * An offer from my shop - this description will be automatically extracted from the PHPDoc to document the API.
  *
@@ -26,7 +33,6 @@ use App\Controller\GetWeather;
  *             "options"={"my_option"="2"},
  *             "schemes"={"http"},
  *             "host"="api-platform.local",
- *             "controller"=ListeEquipementsController::class
  *         },
  *              "get_weather": {
  *             "method": "GET",
@@ -36,7 +42,10 @@ use App\Controller\GetWeather;
  *     }
  *
  * )
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial","product.id": "exact"})
+ * @ApiFilter(DateFilter::class, properties={"createdAt": DateFilter::EXCLUDE_NULL})
+ * @ApiFilter(ExistsFilter::class, properties={"createdAt"})
+ * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"list"}})
  * @ORM\Entity
  */
 class Offer
@@ -50,6 +59,7 @@ class Offer
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"list"})
      */
     public $description;
 
@@ -60,6 +70,12 @@ class Offer
      * @Assert\Type(type="float")
      */
     public $price;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\NotBlank(message="не указана цена")
+     */
+    public $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="offers")
