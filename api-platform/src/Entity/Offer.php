@@ -18,8 +18,8 @@ use App\Controller\GetWeather;
  *     collectionOperations={
  *         "get","post"
  *     },
-        itemOperations={
- *         "get"={
+ *      itemOperations={
+ *         "get" : {
  *             "path"="/offers/{id}",
  *             "requirements"={"id"="\d+"},
  *             "defaults"={"color"="blue"},
@@ -28,7 +28,7 @@ use App\Controller\GetWeather;
  *             "host"="api-platform.local",
  *             "controller"=ListeEquipementsController::class
  *         },
- *              get_weather": {
+ *              "get_weather": {
  *             "method": "GET",
  *             "path": "/places/{id}/weather",
  *             "controller": GetWeather::class
