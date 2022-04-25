@@ -40,7 +40,7 @@ class Product // The class name will be used to name exposed resources
 
     public function __construct()
     {
-        $this->offers = new ArrayCollection(); // Initialize $offers as a Doctrine collection
+        $this->offers = new ArrayCollection(); // Initialize $offers as a Doctrine collectio
     }
 
     public function getId(): ?int
