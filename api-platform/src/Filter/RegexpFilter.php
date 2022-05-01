@@ -34,14 +34,14 @@ final class RegexpFilter extends AbstractContextAwareFilter
 
         $description = [];
         foreach ($this->properties as $property => $strategy) {
-            $description["regexp_$property"] = [
+            $description["$property"] = [
                 'property' => $property,
                 'type' => 'string',
                 'required' => false,
-                'swagger' => [
+                'openapi' => [
                     'description' => 'Filter using a regex. This will appear in the Swagger documentation!',
-                    'name' => 'Custom name to use in the Swagger documentation',
-                    'type' => 'Will appear below the name in the Swagger documentation',
+                    'schema' => ['type' => 'string'],
+                    'type' => 'Will appear below the name in the Swagger documentation'
                 ],
             ];
         }
