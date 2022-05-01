@@ -48,6 +48,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  * @ApiFilter(DateFilter::class, properties={"createdAt": DateFilter::EXCLUDE_NULL})
  * @ApiFilter(ExistsFilter::class, properties={"createdAt", "bool"})
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"list"}})
+ * @ApiFilter(PropertyFilter::class)
  * @ORM\Entity
  */
 class Offer
