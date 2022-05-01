@@ -46,7 +46,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial","product.id": "exact"})
  * @ApiFilter(BooleanFilter::class, properties={"bool"})
  * @ApiFilter(DateFilter::class, properties={"createdAt": DateFilter::EXCLUDE_NULL})
- * @ApiFilter(ExistsFilter::class, properties={"createdAt"})
+ * @ApiFilter(ExistsFilter::class, properties={"createdAt", "bool"})
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"list"}})
  * @ORM\Entity
  */
