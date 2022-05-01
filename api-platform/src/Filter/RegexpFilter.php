@@ -11,7 +11,7 @@ final class RegexpFilter extends AbstractContextAwareFilter
 {
     protected function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
     {
-        // otherwise filter is applied to order and page as well
+        // в противном случае фильтр применяется и к заказу, и к странице
         if (
             !$this->isPropertyEnabled($property, $resourceClass) ||
             !$this->isPropertyMapped($property, $resourceClass)
@@ -21,7 +21,7 @@ final class RegexpFilter extends AbstractContextAwareFilter
 
         $parameterName = $queryNameGenerator->generateParameterName($property); // Generate a unique parameter name to avoid collisions with other filters
         $queryBuilder
-            ->andWhere(sprintf('REGEXP(o.%s, :%s) = 1', $property, $parameterName))
+            ->andWhere(sprintf('o.%s = :%s', $property, $parameterName))
             ->setParameter($parameterName, $value);
     }
 
