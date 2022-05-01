@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -43,6 +44,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *
  * )
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial","product.id": "exact"})
+ * @ApiFilter(BooleanFilter::class, properties={"bool"})
  * @ApiFilter(DateFilter::class, properties={"createdAt": DateFilter::EXCLUDE_NULL})
  * @ApiFilter(ExistsFilter::class, properties={"createdAt"})
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"list"}})
@@ -81,6 +83,11 @@ class Offer
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="offers")
      */
     public $product;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    public $bool;
 
     public function getId(): ?int
     {
