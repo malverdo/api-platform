@@ -86,6 +86,8 @@ class Offer
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Assert\NotNull( message="не указана bool")
+     * @Assert\Type(type="bool",message="не булл")
      */
     public $bool;
 
