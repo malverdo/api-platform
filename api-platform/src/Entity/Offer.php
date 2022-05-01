@@ -10,6 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Filter\RegexpFilter;
 use App\Controller\ListeEquipementsController;
 use App\Controller\GetWeather;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
@@ -43,11 +44,12 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     }
  *
  * )
- * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact", "description": "partial","product.id": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "price": "exact","product.id": "exact"})
  * @ApiFilter(BooleanFilter::class, properties={"bool"})
  * @ApiFilter(DateFilter::class, properties={"createdAt": DateFilter::EXCLUDE_NULL})
  * @ApiFilter(ExistsFilter::class, properties={"createdAt", "bool"})
  * @ApiFilter(GroupFilter::class, arguments={"parameterName": "groups", "overrideDefaultGroups": false, "whitelist": {"list"}})
+ * @ApiFilter(RegexpFilter::class, properties={"description"})
  * @ApiFilter(PropertyFilter::class)
  * @ORM\Entity
  */
