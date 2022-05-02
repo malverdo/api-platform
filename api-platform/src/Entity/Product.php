@@ -38,9 +38,15 @@ class Product // The class name will be used to name exposed resources
      */
     public $offers;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Accaunt", mappedBy="product", cascade={"persist"})
+     */
+    public $accaunt;
+
     public function __construct()
     {
         $this->offers = new ArrayCollection(); // Initialize $offers as a Doctrine collectio
+        $this->accaunt = new ArrayCollection(); // Initialize $offers as a Doctrine collectio
     }
 
     public function getId(): ?int
