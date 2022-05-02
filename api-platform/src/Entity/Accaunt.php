@@ -3,6 +3,7 @@
 namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Action\NotFoundAction;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
