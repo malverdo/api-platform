@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  *  @ORM\Entity
  */
-class User
+class Accaunt
 {
     /**
      * @ORM\Column(type="integer")
@@ -42,7 +42,7 @@ class User
     public $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="offers")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="accaunt")
      */
     public $product;
 
