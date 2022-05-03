@@ -17,7 +17,7 @@ class AccauntDataPersister implements ContextAwareDataPersisterInterface
 
     public function supports($data, array $context = []): bool
     {
-        return $this->decorated->supports($data, $context);
+        return $data instanceof Accaunt;
     }
 
     public function persist($data, array $context = [])
