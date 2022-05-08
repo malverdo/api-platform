@@ -21,6 +21,7 @@ services:
             - '../src/Kernel.php'
 
     App\DataPersister\AccauntDataPersister:
-        decorates: 'api_platform.doctrine.orm.data_persister'
+#        decorates: 'api_platform.doctrine.orm.data_persister'
+        tags: [ 'api_platform.data_persister' ]
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
