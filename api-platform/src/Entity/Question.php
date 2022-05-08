@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ApiResource
+ *  @ApiResource
  */
 class Question
 {
@@ -35,6 +35,4 @@ class Question
     {
         return $this->id;
     }
-
-    // ...
 }
