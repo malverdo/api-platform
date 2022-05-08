@@ -18,9 +18,15 @@ class AccauntRepository extends ServiceEntityRepository
         /**
          * @link https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository
          */
-        $entity = $this->getEntityManager();
+
     }
 
+    public function save($accaunt)
+    {
+        $entity = $this->getEntityManager();
+        $entity->persist($accaunt);
+        $entity->flush();
+    }
 
 
 }
