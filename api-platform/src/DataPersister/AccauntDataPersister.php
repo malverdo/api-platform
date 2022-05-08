@@ -4,16 +4,17 @@ namespace App\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\Accaunt;
+use App\Repository\AccauntRepository;
 
 class AccauntDataPersister implements ContextAwareDataPersisterInterface
 {
+    public $accauntRepository;
 
-    private $decorated;
-
-    public function __construct(ContextAwareDataPersisterInterface $decorated)
+    public function __construct(AccauntRepository $accauntRepository)
     {
-        $this->decorated = $decorated;
+        $this->accauntRepository = $accauntRepository;
     }
+
 
     public function supports($data, array $context = []): bool
     {
@@ -23,11 +24,13 @@ class AccauntDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
         // call your persistence layer to save $data
-        return $result = $this->decorated->persist($data, $context);;
+        $this->accauntRepository->save($data);
+        return $data;
     }
 
     public function remove($data, array $context = [])
     {
-        return $this->decorated->remove($data, $context);
+        // call your persistence layer to delete $data
+        $a = 0;
     }
 }
