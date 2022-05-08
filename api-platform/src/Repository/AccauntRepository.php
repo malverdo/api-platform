@@ -15,9 +15,12 @@ class AccauntRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Accaunt::class);
-        $entityManager = $registry->getManager();
-
+        /**
+         * @link https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository
+         */
+        $entity = $this->getEntityManager();
     }
+
 
 
 }
