@@ -32,6 +32,4 @@ class Answer
     {
         return $this->id;
     }
-
-    // ...
 }
