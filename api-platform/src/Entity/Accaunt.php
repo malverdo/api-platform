@@ -4,6 +4,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Action\NotFoundAction;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -24,6 +25,7 @@ class Accaunt
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"write"})
      */
     public $description;
 
@@ -32,12 +34,14 @@ class Accaunt
      * @Assert\NotBlank(message="не указана цена")
      * @Assert\Range(min=0, minMessage="The price must be superior to 0.")
      * @Assert\Type(type="float")
+     * @Groups({"write"})
      */
     public $price;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\NotBlank(message="не указана цена")
+     * @Groups({"write"})
      */
     public $createdAt;
 
@@ -48,6 +52,7 @@ class Accaunt
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"write"})
      */
     public $name;
 
@@ -55,6 +60,7 @@ class Accaunt
      * @ORM\Column(type="boolean", nullable=true)
      * @Assert\NotNull( message="не указана bool")
      * @Assert\Type(type="bool",message="не булл")
+     * @Groups({"write"})
      */
     public $bool;
 
