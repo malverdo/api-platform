@@ -76,7 +76,7 @@ class Accaunt
     /**
      * @Groups({"write"})
      */
-    public function getWrite2(): int
+    public function getWrite(): int
     {
         return $b = $this->id + 9;
     }
