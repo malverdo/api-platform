@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Action\NotFoundAction;
@@ -10,7 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *  @ApiResource(
- *     collectionOperations={"get","post"}
+ *     collectionOperations={"get","post"},
+ *     normalizationContext={"groups"={"write"}}
  * )
  *  @ORM\Entity
  */
@@ -67,5 +69,13 @@ class Accaunt
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @Groups({"write"})
+     */
+    public function getWrite(): int
+    {
+        return $b = 0 + 9;
     }
 }
