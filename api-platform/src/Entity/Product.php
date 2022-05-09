@@ -8,12 +8,16 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity
  * @ApiFilter(SearchFilter::class, properties={ "name": "partial"})
+ *
  */
 class Product // The class name will be used to name exposed resources
 {
@@ -29,17 +33,20 @@ class Product // The class name will be used to name exposed resources
      *
      * @ORM\Column
      * @Assert\NotBlank
+     * @Groups({"write"})
      */
     public $name;
 
     // Notice the "cascade" option below, this is mandatory if you want Doctrine to automatically persist the related entity
     /**
      * @ORM\OneToMany(targetEntity="Offer", mappedBy="product", cascade={"persist"})
+     * @Groups({"write"})
      */
     public $offers;
 
     /**
      * @ORM\OneToMany(targetEntity="Accaunt", mappedBy="product", cascade={"persist"})
+     * @Groups({"write"})
      */
     public $accaunt;
 
