@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  *  @ApiResource(
  *     collectionOperations={"get","post"},
- *     normalizationContext={"groups"={"write"}}
+ *     normalizationContext={"groups"={"write"},"jsonld_embed_context"=true}
  * )
  *  @ORM\Entity
  */
