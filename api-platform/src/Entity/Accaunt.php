@@ -3,6 +3,7 @@
 namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Validator\Constraints\MinimalProperties;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Action\NotFoundAction;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -11,7 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *  @ApiResource(
- *     collectionOperations={"get","post"},
+ *     collectionOperations={"get",
+ *     "post"={"validation_groups"={"test"}}
+ *     },
  *     normalizationContext={"groups"={"write"},"jsonld_embed_context"=true}
  * )
  *  @ORM\Entity
@@ -57,6 +60,7 @@ class Accaunt
     /**
      * @ORM\Column(type="text")
      * @Groups({"write"})
+     * @Assert\NotBlank(groups={"test"},  message="нет name ")
      */
     public $name;
 
@@ -67,6 +71,14 @@ class Accaunt
      * @Groups({"write"})
      */
     public $bool;
+
+    /**
+     * @var string[] Describe the product
+     * @Groups({"write"})
+     * @MinimalProperties(groups={"test"})
+     * @ORM\Column(type="json", nullable=true)
+     */
+    public $properties;
 
     public function getId(): ?int
     {
