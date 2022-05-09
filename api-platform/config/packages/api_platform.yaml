@@ -5,6 +5,8 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    eager_loading:
+        max_joins: 1000
 
 #    collection:
 #        exists_parameter_name: 'not_null'
