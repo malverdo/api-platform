@@ -49,6 +49,8 @@ class Accaunt
 
     /**
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="accaunt")
+     * @Groups({"write"})
+     * @ApiProperty(readableLink=false, writableLink=false)
      */
     public $product;
 
@@ -74,8 +76,8 @@ class Accaunt
     /**
      * @Groups({"write"})
      */
-    public function getWrite(): int
+    public function getWrite2(): int
     {
-        return $b = 0 + 9;
+        return $b = $this->id + 9;
     }
 }
