@@ -13,7 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *  @ApiResource(
- *     collectionOperations={"get",
+ *     collectionOperations={"get"={
+         "openapi_context"= {"description" = "# Pop a great rabbit picture by color!\n\n!"}
+ *     },
  *     "post"={"validation_groups"={"test"}}
  *     },
  *     normalizationContext={"groups"={"write"},"jsonld_embed_context"=true},
