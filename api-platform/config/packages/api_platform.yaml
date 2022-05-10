@@ -7,6 +7,7 @@ api_platform:
         versions: [3]
     eager_loading:
         max_joins: 1000
-
+    validator:
+        serialize_payload_fields: [severity]
 #    collection:
 #        exists_parameter_name: 'not_null'
