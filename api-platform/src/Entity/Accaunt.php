@@ -69,7 +69,7 @@ class Accaunt
     /**
      * @ORM\Column(type="text")
      * @Groups({"write"})
-     * @Assert\NotBlank(groups={"test"},  message="нет name ")
+     * @Assert\NotBlank(groups={"test"},  message="нет name ", payload={"severity": "warning"})
      */
     public $name;
 
