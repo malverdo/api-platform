@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *  @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_ADMINQ') or object.description == 'text cool'"},
  *     collectionOperations={"get"={
          "openapi_context"= {"description" = "# Pop a great rabbit picture by color!\n\n!"}
  *     },

@@ -16,7 +16,8 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
 {
     public function supports(Request $request): ?bool
     {
-        return $request->headers->has('X-API-KEY');
+//        return $request->headers->has('X-API-KEY');
+        return true;
     }
 
     public function authenticate(Request $request): Passport
@@ -33,12 +34,12 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        // TODO: Implement onAuthenticationSuccess() method.
+        return null;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
-        // TODO: Implement onAuthenticationFailure() method.
+        return new Response('game over', 401);
     }
 
 //    public function start(Request $request, AuthenticationException $authException = null): Response
