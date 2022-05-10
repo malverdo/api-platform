@@ -3,6 +3,7 @@
 namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Validator\Constraints\MinimalProperties;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Action\NotFoundAction;
@@ -15,7 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     collectionOperations={"get",
  *     "post"={"validation_groups"={"test"}}
  *     },
- *     normalizationContext={"groups"={"write"},"jsonld_embed_context"=true}
+ *     normalizationContext={"groups"={"write"},"jsonld_embed_context"=true},
+ *     subresourceOperations={
+ *          "api_products_accaunt_get_subresource"={
+ *              "method"="GET"
+ *          },
+ *      }
  * )
  *  @ORM\Entity
  */
@@ -54,6 +60,7 @@ class Accaunt
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="accaunt")
      * @Groups({"write"})
      * @ApiProperty(readableLink=false, writableLink=false)
+     * @ApiSubresource
      */
     public $product;
 
